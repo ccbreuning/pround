@@ -18,7 +18,7 @@ pip install numpy pandas uncertainties
 
 ## Usage
 
-There are a few examples in the [examples] folder. 
+There are a few examples in the [examples](examples/) folder. 
 
 ## Rounding
 
