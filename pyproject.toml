@@ -1,14 +1,14 @@
 [build-system]
 requires = ["hatchling", "numpy", "pandas", "uncertainties"]
-build-backend = "hatchling.build_backend"
+build-backend = "hatchling.build"
 
 [project]
 name = "pround"
 version = "0.0.1"
 authors = [
-  { name="Cedric Breuning", email="contact@ccbreuning.de" },
+  { name="Cedric Breuning", email="author@example.com" },
 ]
-description = "Create tables (LaTeX and Excel) of values with uncertainties, properly rounded."
+description = "Create latex and excel tables with values and uncertainties properly rounded."
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [

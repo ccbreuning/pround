@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
-from pround import Pround
+from pround.pround import Pround
 
 # Ein Paar Pseudo Daten
 x = np.array([1.23456789, 2.3456789, 3.456789])
