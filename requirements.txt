@@ -1,4 +1,0 @@
-# Necessary
-numpy
-pandas
-uncertainties
