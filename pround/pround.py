@@ -100,9 +100,10 @@ class Pround:
             raise ValueError("Values and uncertainties must be 1D arrays.")
         if len(values) > 0:
             if isinstance(values[0], unc.core.Variable):
+                
                 rounded_values = self.__round_unumpy(values)
-        if isinstance(values, np.ndarray):
-            rounded_values = self.__round_numpy(values, uncertainties, ndigits)
+            elif isinstance(values, np.ndarray):
+                rounded_values = self.__round_numpy(values, uncertainties, ndigits)
         self.data[header] = rounded_values
 
     def print_table(self, filename: str | Path = None, landscape: bool = True) -> None:
