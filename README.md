@@ -15,6 +15,14 @@ All can be installed with `pip`:
 ```bash
 pip install numpy pandas uncertainties
 ```
+## Installation
+
+Download/Clone this repository, `cd` into is and run
+
+```bash
+pip install .
+```
+
 
 ## Usage
 
