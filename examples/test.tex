@@ -1,0 +1,21 @@
+\documentclass{scrartcl}
+\KOMAoptions{fontsize=12pt, paper=a4, paper=landscape}
+\KOMAoptions{DIV=20}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb}
+\usepackage{physics}
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\pagenumbering{gobble}\begin{document}
+\begin{tabular}{ccc}\toprule
+x / cm & y / cm & z / cm\\ 
+\midrule
+\num{1.23(12)} & \num{10.2(1.2)} & 42.0\\
+\num{2.35(23)} & \num{20.3(2.3)} & 21.0\\
+\num{3.5(4)} & \num{30(3)} & 100.0\\
+\bottomrule
+\end{tabular}
+\end{document}
