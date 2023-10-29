@@ -1,3 +1,4 @@
+import math
 from pathlib import Path
 from typing import List
 
@@ -64,17 +65,24 @@ class Pround:
         """
         result = []
         for val in values:
-            first_uncert_digit = np.floor(val.s * 10 ** -np.floor(np.log10(val.s)))
+            precision = int(-np.floor(np.log10(val.s)))
+            first_uncert_digit = np.floor(val.s * 10 ** precision)
             if int(np.abs(first_uncert_digit)) == 1 or int(np.abs(first_uncert_digit)) == 2:
-                if self.format == "excel":
-                    result.append(f"{val:.2u}")
-                else:
-                    result.append(f"\\num{{{val:.2uS}}}")
+                precision += 1 
+            if precision < 0:
+                v = round(val.n, precision)
+                s = round(val.s, precision)
+                print(val.s, precision)
             else:
-                if self.format == "excel":
-                    result.append(f"{val:.1u}")
-                else:
-                    result.append(f"\\num{{{val:.1uS}}}")
+                v = val.n
+                s = val.s
+            rounded_val = ('{0:.' + str(max(precision, 0)) + 'f}').format(v)
+            rounded_err = ('{0:.' + str(max(precision, 0)) + 'f}').format(s)
+            if self.format == "latex":
+                result.append(f"\\num{{{rounded_val} +- {rounded_err}}}")
+            else:
+                result.append(f"{rounded_val} +- {rounded_err}")
+
         return result
         
 
