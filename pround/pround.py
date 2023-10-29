@@ -106,7 +106,7 @@ class Pround:
                 rounded_values = self.__round_numpy(values, uncertainties, ndigits)
         self.data[header] = rounded_values
 
-    def print_table(self, filename: str | Path = None, landscape: bool = True) -> None:
+    def print_table(self, filename: str | Path = None, landscape: bool = True, min: int = 0, max: int = None) -> None:
         """Print the data frame as a table.
 
         Parameters
@@ -115,6 +115,10 @@ class Pround:
             filename if the table is to be saved to a file, by default None
         landscape : bool, optional
             Whether the table should be printed in landscape mode, by default True
+        min : int, optional
+            The first row to print, by default 0
+        max : int, optional
+            The last row to print, by default None. Python slcing is used, thus, begin counging at 0.
         """
         if self.format == "excel":
             if filename is None:
@@ -124,7 +128,9 @@ class Pround:
         elif self.format == "latex":
             latex_str = f"\\begin{{tabular}}{{{'c' * len(self.data.columns)}}}\\toprule\n"
             latex_str += f"{' & '.join(self.data.columns)}\\\\ \n\\midrule\n"
-            for row in self.data.values:
+            rows = self.data.values
+            rows = rows[min:max] if max is not None else rows[min:]
+            for row in rows:
                 latex_str += f"{' & '.join(row)}\\\\\n"
             latex_str += "\\bottomrule\n\\end{tabular}\n"
             if filename is None:

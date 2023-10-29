@@ -34,4 +34,5 @@ cwd = Path(__file__).parent
 
 # Save table in latex file (can be complied with e.g. lualatex). Landscape is optional and defines the orientation of the latex file
 # If filename is not provided the table is printed to stdout
-p.print_table(filename=cwd / "test.tex", landscape=True)
+# With min and max the table rows cam be sliced [min: max)
+p.print_table(filename=cwd / "test.tex", landscape=True, max=2)
